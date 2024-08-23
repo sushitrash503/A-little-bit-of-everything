@@ -31,6 +31,8 @@
         <span>-No se que mas agregar</span>
         <li>3-Chistes malos</li>
         <span>-¿Que le dijo un pollo a otro?</span>
+        <li style="text-decoration: line-through;">4-Agregar section de imagenes random</li>
+        <span>-Agregar cuadro deslizable con imagenes</span>
       </ul>
       <h2>Spoiler Manga de esta semana</h2>
       <img src="/img/frame-1.png" alt="un panel de un manga de one piece">
@@ -61,15 +63,99 @@
         <!-- Imágenes dentro del div arrastrable -->
         <img src="https://i.pinimg.com/736x/bb/91/a3/bb91a34f59714221a4b6ed9caa2bf82b.jpg" alt="Imagen 1">
         <img src="https://i.pinimg.com/564x/a0/f9/48/a0f9480dd1b61c059bce2199116d113f.jpg" alt="Imagen 2">
-        <img src="https://i.pinimg.com/564x/89/2e/24/892e24fc5c794dabd9bb8e366c925bea.jpg" alt="Imagen 3">
+        <img src="https://i.pinimg.com/736x/36/92/0d/36920d5027bb87968ea3d0813a7e66ef.jpg" alt="Imagen 3">
         <img src="https://i.pinimg.com/736x/8c/fb/eb/8cfbeb264daf20be71f166194b76360e.jpg" alt="Imagen 4">
         <img src="https://i.pinimg.com/564x/0c/2c/57/0c2c5716d71fda967d637e16cb311b7d.jpg" alt="Imagen 5">
-        <img src="https://via.placeholder.com/150" alt="Imagen 6">
+        <img src="https://i.pinimg.com/736x/f7/fe/75/f7fe75d94e78c3bbef4087f3f60adf53.jpg" alt="Imagen 6">
+      </div>
+    </div>
+    <div>
+      <div id="draggable-window2" class="draggable2">
+        <div class="window-header2">
+          song/top_my
+        </div>
+        <div id="window-content2" class="window-content2">
+          <h2 style="font-size: 15px; text-align: center  ;">Esta cancion no me la saco de la mente...</h2>
+
+          <div class="audio-player">
+            <audio controls>
+                <source src="cuco.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+        <h2 style="text-align: center;">Best Friend - Cuco</h3>
+        </div>
       </div>
     </div>
     
     
-    
     <script src="index.js"></script>
+    <script>
+      // Función para randomizar el orden de las imágenes
+      function shuffleImages() {
+        const contentDiv = document.getElementById('window-content');
+        const images = Array.from(contentDiv.children);
+        images.sort(() => Math.random() - 0.5);
+        images.forEach(img => contentDiv.appendChild(img));
+      }
+    
+      // Llamamos a la función shuffleImages cuando la página se carga
+      window.onload = shuffleImages;
+    
+      // Función para arrastrar los elementos
+      function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (elmnt.getElementsByClassName("window-header")[0]) {
+          elmnt.getElementsByClassName("window-header")[0].onmousedown = dragMouseDown;
+        } else {
+          elmnt.onmousedown = dragMouseDown;
+        }
+    
+        function dragMouseDown(e) {
+          e = e || window.event;
+          e.preventDefault();
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          document.onmouseup = closeDragElement;
+          document.onmousemove = elementDrag;
+        }
+    
+        function elementDrag(e) {
+          e = e || window.event;
+          e.preventDefault();
+          pos1 = pos3 - e.clientX;
+          pos2 = pos4 - e.clientY;
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+          elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+    
+        function closeDragElement() {
+          document.onmouseup = null;
+          document.onmousemove = null;
+        }
+      }
+    
+      // Llamamos a la función dragElement para el primer y segundo div
+      dragElement(document.getElementById("draggable-window"));
+      dragElement(document.getElementById("draggable-window2"));
+    
+      // Función para ocultar y mostrar el contenido
+      const toggleButton = document.getElementById('toggle-content');
+      const contentDiv = document.getElementById('window-content');
+    
+      toggleButton.addEventListener('click', function () {
+        if (contentDiv.style.display === 'none') {
+          contentDiv.style.display = 'block';
+          toggleButton.textContent = 'Cerrar';
+        } else {
+          contentDiv.style.display = 'none';
+          toggleButton.textContent = 'Abrir';
+        }
+      });
+    </script>
+    
+  
 </body>
 </html>
