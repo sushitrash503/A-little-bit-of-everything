@@ -269,5 +269,12 @@ body.no-scroll {
 .popup button:hover {
   background-color: #0056b3;
 }
-
+@media (max-width: 768px) {
+  .draggable1{
+    display: hidden;
+  }
+  .draggrable2{
+    display: hidden;
+  }
+}
 /* Personaliza los controles de audio */
