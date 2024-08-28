@@ -1,20 +1,24 @@
 function isMobileDevice() {
-    return window.innerWidth <= 768; // Puedes ajustar el ancho si es necesario
-  }
-  
-  function showPopup() {
-    document.querySelector('.popup').style.display = 'block';
-    document.querySelector('.overlay').style.display = 'block';
-  }
-  
-  function closePopup() {
-    document.querySelector('.popup').style.display = 'none';
-    document.querySelector('.overlay').style.display = 'none';
-  }
-  
-  if (isMobileDevice()) {
-    showPopup();
-  }
+  return window.innerWidth <= 768; // Puedes ajustar el ancho si es necesario
+}
+
+function showPopup() {
+  document.querySelector('.popup').style.display = 'block';
+  document.querySelector('.overlay').style.display = 'block';
+  document.body.classList.add('no-scroll');
+}
+
+function closePopup() {
+  document.querySelector('.popup').style.display = 'none';
+  document.querySelector('.overlay').style.display = 'none';
+  document.body.classList.remove('no-scroll');
+}
+
+// Mostrar el popup si se detecta un dispositivo móvil
+if (isMobileDevice()) {
+  showPopup();
+}
+
   function makeDraggable(element) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   
