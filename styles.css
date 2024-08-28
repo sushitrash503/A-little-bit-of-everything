@@ -117,30 +117,6 @@ ul li{
 .hidden-content {
   display: none;
 }
-.popup {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border: 2px solid black;
-  z-index: 1000;
-  font-family: "Moderustic", sans-serif;
-  text-align: center;
-}
-
-.overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
 .music-player {
   width: 300px;
   padding: 10px;
@@ -242,5 +218,56 @@ ul li{
   background-color: #555;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  padding: 20px;
+  border: 2px solid black;
+  z-index: 1000;
+  font-family: "Moderustic", sans-serif;
+  text-align: center;
+  overflow: hidden;
+}
+
+.popup h2 {
+  margin-top: 0;
+}
+
+.popup p {
+  font-size: 1.2em;
+}
+
+.popup button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background-color: #0056b3;
+}
 
 /* Personaliza los controles de audio */
