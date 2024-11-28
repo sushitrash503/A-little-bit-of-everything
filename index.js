@@ -8,7 +8,7 @@ function updateCountdown() {
     const distance = targetDate - now;
 
     if (distance <= 0) {
-        countdownElement.innerHTML = "¡El momento ha llegado!";
+        countdownElement.innerHTML = ":/";
         clearInterval(interval);
         return;
     }
