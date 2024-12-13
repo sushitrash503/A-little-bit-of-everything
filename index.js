@@ -8,7 +8,7 @@ function updateCountdown() {
     const distance = targetDate - now;
 
     if (distance <= 0) {
-        countdownElement.innerHTML = ":/";
+        countdownElement.innerHTML = "Al fiiiiiiiiiin :333333 feli cumpleaño linda <3 espero la pase super bonito la quiero muchio <333";
         clearInterval(interval);
         return;
     }
